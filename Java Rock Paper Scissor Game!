@@ -1,0 +1,62 @@
+package com.company;
+
+import java.util.Scanner;
+import java.util.Random;
+
+public class Exercise02_RockPaperScissor {
+    public static void main(String[] args) {
+       // Scanner sc = new Scanner(System.in);
+        System.out.println("Welcome to a game of Rock Paper Scissors");
+//        System.out.println("Rock = 1, Paper = 2, Scissor = 3");
+        System.out.println("Press '1' for Rock, '2' for Paper and '3' for Scissors");
+
+        for (int i = 0; i<6; i++){
+            int ComputerChoice = getRandomNumber(1,4);
+           Scanner scan = new Scanner(System.in);
+            System.out.println("Round Starts!");
+            int UserChoice = scan.nextInt();
+            /*
+            if(UserChoice == 1){
+                System.out.println("You chose rock");
+            }
+            else if(UserChoice==2){
+                System.out.println("You chose paper");
+            }
+            else if(UserChoice==3){
+                System.out.println("You chose scissor");
+            }
+             */
+            if((ComputerChoice == 1 && UserChoice == 2)|| (ComputerChoice == 2 && UserChoice == 3) ||
+                    (ComputerChoice == 3 && UserChoice == 1)){
+
+                System.out.println("You Win!");
+            }
+
+            else if((ComputerChoice==UserChoice)){
+                System.out.println("Tie!");
+            }
+            else if((UserChoice>3)){
+                System.out.println("Invalid Number, Please put correct numbers (1/2/3) and try again");
+                break;
+            }
+            else{
+                System.out.println("You Lost!");
+            }
+
+            if(ComputerChoice == 1){
+                System.out.println("Computer chose rock: rock defeats scissor but is defeated by paper");
+            }
+            else if(ComputerChoice==2){
+                System.out.println("Computer chose paper: paper defeats rock but is defeated by scissors");
+            }
+            else if(ComputerChoice==3){
+                System.out.println("Computer chose scissor: scissor defeats paper but is defeated by rock");
+            }
+    }
+
+    }
+    public static int getRandomNumber(int min, int max){
+        Random random = new Random();
+        return random.ints(min,max).findFirst().getAsInt();
+    }
+}
